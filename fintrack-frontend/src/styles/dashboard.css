@@ -1,0 +1,217 @@
+/* === Dashboard === */
+.dashboard-page {
+  animation: fadeInUp 0.4s ease;
+}
+
+.dashboard-header {
+  margin-bottom: 28px;
+}
+
+.dashboard-header h1 {
+  font-size: 1.75rem;
+  margin-bottom: 4px;
+}
+
+.dashboard-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* === Stat Cards Grid === */
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.stat-card.income::before { background: var(--income); }
+.stat-card.expense::before { background: var(--expense); }
+.stat-card.balance::before { background: var(--accent-gradient); }
+.stat-card.savings::before { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+
+.stat-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.stat-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card.income .stat-card-icon {
+  background: var(--income-bg);
+  color: var(--income);
+}
+
+.stat-card.expense .stat-card-icon {
+  background: var(--expense-bg);
+  color: var(--expense);
+}
+
+.stat-card.balance .stat-card-icon {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--accent-1);
+}
+
+.stat-card.savings .stat-card-icon {
+  background: var(--warning-bg);
+  color: var(--warning);
+}
+
+.stat-card-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.stat-card-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.stat-card-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* === Dashboard Grid === */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.dashboard-full-width {
+  margin-bottom: 28px;
+}
+
+/* === Chart Card === */
+.chart-card {
+  padding: 24px;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-card-header h3 {
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* === Recent Transactions List === */
+.recent-transactions {
+  padding: 24px;
+}
+
+.recent-transactions h3 {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  transition: all var(--transition-fast);
+}
+
+.recent-item:hover {
+  background: var(--bg-tertiary);
+}
+
+.recent-item-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.recent-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.recent-item-details .desc {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-item-details .category {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.recent-item-amount {
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.recent-item-amount.income { color: var(--income); }
+.recent-item-amount.expense { color: var(--expense); }
+
+/* === Responsive === */
+@media (max-width: 1200px) {
+  .stat-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .stat-cards { grid-template-columns: 1fr; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+}
