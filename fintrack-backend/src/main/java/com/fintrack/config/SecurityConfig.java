@@ -1,6 +1,7 @@
 package com.fintrack.config;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,14 +25,18 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final UserDetailsService userDetailsService;
 
+    @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:3000}")
+    private String allowedOrigins;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(request -> {
                 var config = new org.springframework.web.cors.CorsConfiguration();
-                config.addAllowedOrigin("http://localhost:5173");
-                config.addAllowedOrigin("http://localhost:3000");
+                for (String origin : allowedOrigins.split(",")) {
+                    config.addAllowedOrigin(origin.trim());
+                }
                 config.addAllowedMethod("*");
                 config.addAllowedHeader("*");
                 config.setAllowCredentials(true);

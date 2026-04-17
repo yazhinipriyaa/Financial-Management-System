@@ -1,0 +1,16 @@
+# Environment files
+.env
+.env.local
+.env.production
+
+# Frontend build
+fintrack-frontend/dist
+fintrack-frontend/node_modules
+
+# Backend build
+fintrack-backend/target
+
+# IDE
+.idea
+*.iml
+.vscode
