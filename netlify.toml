@@ -1,0 +1,7 @@
+[build]
+  base = "fintrack-frontend"
+  command = "npm install && npx vite build"
+  publish = "fintrack-frontend/dist"
+
+[build.environment]
+  NODE_VERSION = "18"
